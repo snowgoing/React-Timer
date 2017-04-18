@@ -1,21 +1,19 @@
 var React = require('react');
 var {Component} = React;
 var Clock = require('Clock');
-var Controls = require('Controls');
 var CountdownForm = require('CountdownForm');
+var Controls = require('Controls');
 
 class Timer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timerStatus: 'stopped',
-      count: 0
+      count: 0,
+      timerStatus: 'stopped'
     }
-
-    this.handleStatusChange = this.handleStatusChange.bind(this);
   }
   componentDidUpdate(prevProps, prevState) {
-    if(this.state.timerStatus !== prevState.timerStatus) {
+    if (this.state.timerStatus !== prevState.timerStatus) {
       switch(this.state.timerStatus) {
         case 'started':
           this.handleStart();
@@ -23,7 +21,7 @@ class Timer extends Component {
         case 'stopped':
           this.setState({
             count: 0,
-            timerStatus: 'paused'
+            timerStatus: 'stopped'
           });
         case 'paused':
           clearInterval(this.timer);
