@@ -5,7 +5,7 @@ class CountdownForm extends Component {
   onSubmit(e) {
     e.preventDefault();
     var strSeconds = e.target.seconds.value;
-  
+
     if (strSeconds && strSeconds.match(/^[0-9]*$/)) {
       e.target.seconds.value = '';
       this.props.onSetCountdown(parseInt(strSeconds, 10));

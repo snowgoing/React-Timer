@@ -14,6 +14,20 @@ module.exports = {
     new webpack.ProvidePlugin({
       '$': 'jquery',
       'jQuery': 'jquery'
+    }),
+    // This LoaderOptionsPlugin doesn't work at all
+    // leaving it in for reference
+    // manually followed paths into node_modules in _foundation-settings.scss
+    // and app.scss
+    new webpack.LoaderOptionsPlugin({
+      options: {
+          // context: '/',
+          sassLoader: {
+              includePaths: [
+                  path.resolve(__dirname, './node_modules/foundation-sites/scss')
+              ]
+          }
+      }
     })
   ],
   output: {
@@ -45,5 +59,6 @@ module.exports = {
       }
     ]
   },
+
   devtool: 'eval-source-map'
 };
